@@ -17,11 +17,10 @@ services:
       - POSTGRES_USER=nx_user
       - POSTGRES_PASSWORD=nx_pwd
     volumes:
-      - /var/docker/nextcloud/sites-enabled:/etc/apache2/sites-enabled
-      #- /var/docker/nextcloud/config:/usr/src/nextcloud/config
-      #- /var/docker/nextcloud/custom_apps:/usr/src/nextcloud/custom_apps
-      #- /var/docker/nextcloud/themes:/usr/src/nextcloud/themes/<YOUR_CUSTOM_THEME>
-      #- /var/docker/nextcloud/data:/usr/src/nextcloud/data
+      - /var/docker/nextcloud/config:/var/www/html/config
+      - /var/docker/nextcloud/custom_apps:/var/www/html/custom_apps
+      - /var/docker/nextcloud/data:/var/www/html/data
+      #- /var/docker/nextcloud/themes:/var/www/html/themes/<YOUR_CUSTOM_THEME>
     ports:
       - 80:80
   postgresql:
