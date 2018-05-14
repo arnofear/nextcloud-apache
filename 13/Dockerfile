@@ -1,5 +1,5 @@
 # https://github.com/nextcloud/docker/blob/master/.examples/dockerfiles/full/apache/Dockerfile
-FROM nextcloud:13.0.1-apache
+FROM nextcloud:13-apache
 
 ENV DEBIAN_FRONTEND noninteractive
 
