@@ -5,8 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV CRON_MEMORY_LIMIT 1024M
 
-RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list \
-&& apt-get update \
+RUN apt-get update \
 && apt-get install --no-install-recommends --no-install-suggests -y \
     supervisor \
     cron \
@@ -15,7 +14,7 @@ RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/so
     libc-client-dev libkrb5-dev \
     smbclient libsmbclient-dev \
     locales locales-all \
-&& apt-get install --no-install-recommends --no-install-suggests -y -t jessie-backports ffmpeg \
+    ffmpeg \
 && ln -s "/usr/include/$(dpkg-architecture --query DEB_BUILD_MULTIARCH)/gmp.h" /usr/include/gmp.h \
 && docker-php-ext-configure imap --with-kerberos --with-imap-ssl >/dev/null \
 && docker-php-ext-install bz2 gmp imap >/dev/null \
