@@ -47,4 +47,6 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=1s --retries=3 CMD curl 
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+EXPOSE 80 443
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
