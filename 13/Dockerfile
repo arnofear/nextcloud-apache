@@ -15,7 +15,7 @@ RUN apt-get update \
     smbclient libsmbclient-dev \
     locales locales-all \
     ffmpeg \
-    wget iproute2 \
+    wget iproute2 less \
 && ln -s "/usr/include/$(dpkg-architecture --query DEB_BUILD_MULTIARCH)/gmp.h" /usr/include/gmp.h \
 && docker-php-ext-configure imap --with-kerberos --with-imap-ssl >/dev/null \
 && docker-php-ext-install bz2 gmp imap >/dev/null \
