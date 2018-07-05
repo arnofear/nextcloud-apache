@@ -23,7 +23,7 @@ RUN apt-get update \
 && docker-php-ext-enable imagick smbclient \
 && rm -f /etc/cron.*/* \
 && echo "*/15 * * * * su - www-data -s /bin/bash -c \"/usr/local/bin/php -d memory_limit=$CRON_MEMORY_LIMIT -f /var/www/html/cron.php\"" | crontab - \
-&& a2enmod rewrite headers env dir mime \
+&& a2enmod rewrite headers env dir mime ssl \
 && a2dismod status \
 && sed -i 's/^ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
 && sed -i 's/^ServerTokens OS/ServerTokens Minimal/' /etc/apache2/conf-available/security.conf \
