@@ -3,7 +3,8 @@ FROM nextcloud:13-apache
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV CRON_MEMORY_LIMIT 1024M
+ENV CRON_MEMORY_LIMIT=1024M
+ENV NEXTCLOUD_UPDATE=1
 
 RUN apt-get update \
 && apt-get install --no-install-recommends --no-install-suggests -y \
@@ -22,7 +23,7 @@ RUN apt-get update \
 && pecl install imagick smbclient >/dev/null \
 && docker-php-ext-enable imagick smbclient \
 && rm -f /etc/cron.*/* \
-&& echo "*/15 * * * * su - www-data -s /bin/bash -c \"/usr/local/bin/php -d memory_limit=$CRON_MEMORY_LIMIT -f /var/www/html/cron.php\"" | crontab - \
+&& echo "*/15 * * * * /usr/local/bin/php -d memory_limit=$CRON_MEMORY_LIMIT -f /var/www/html/cron.php" > /var/spool/cron/crontabs/www-data \
 && a2enmod rewrite headers env dir mime ssl \
 && a2dismod status \
 && sed -i 's/^ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf \
