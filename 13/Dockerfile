@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV CRON_MEMORY_LIMIT=1024M
 ENV NEXTCLOUD_UPDATE=1
-ENV INSTALLED_VERSION=13.0.7.2
+# Bug /entrypoint.sh : mettre une version antérieure à celle de l'image officielle (x.y.z.0)
+ENV INSTALLED_VERSION=13.0.7.0
 
 RUN apt-get update \
 && apt-get install --no-install-recommends --no-install-suggests -y \
