@@ -40,7 +40,7 @@ ENV LC_ALL fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR.UTF-8
 
-COPY entrypoint.sh /entrypoint.sh
+# COPY entrypoint.sh /entrypoint.sh
 COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 # ATTENTION cette conf execute le script de l'image php:7.1-apache : /usr/local/bin/apache2-foreground
 COPY supervisor/apache2-foreground.conf /etc/supervisor/conf.d/apache2-foreground.conf
