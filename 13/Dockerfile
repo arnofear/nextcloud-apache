@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV CRON_MEMORY_LIMIT=1024M
 ENV NEXTCLOUD_UPDATE=1
-ENV INSTALLED_VERSION=13.0.4.0
+ENV INSTALLED_VERSION=13.0.7.2
 
 RUN apt-get update \
 && apt-get install --no-install-recommends --no-install-suggests -y \
@@ -40,7 +40,7 @@ ENV LC_ALL fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR.UTF-8
 
-# COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 # ATTENTION cette conf execute le script de l'image php:7.1-apache : /usr/local/bin/apache2-foreground
 COPY supervisor/apache2-foreground.conf /etc/supervisor/conf.d/apache2-foreground.conf
